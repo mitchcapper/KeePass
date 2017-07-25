@@ -402,7 +402,7 @@ namespace KeePass.UI
 				uint uBits = QualityEstimation.EstimatePasswordBits(pbUtf8);
 
 				TextBox tb = m_tbPassword;
-				if(tb == null) return; // Control disposed in the meanwhile
+				if(tb == null || tb.IsDisposed) return; // Control disposed in the meanwhile
 
 				byte[] pbNewUtf8 = (tb.Invoke(new UqiGetPasswordDelegate(
 					this.UqiGetPassword)) as byte[]);
